@@ -39,7 +39,7 @@ export default function App(){
 
 
   return(
-    <div className="bg-zinc-900 min-h-screen flex flex-col items-center py-2  lg:flex-row lg:justify-center">
+    <div className="bg-zinc-900 min-h-screen flex flex-col justify-between items-center py-2  lg:flex-row lg:justify-center">
       <div className='flex flex-col items-center '>
         <div className=" text-2xl text-white mb-2"><span className='text-green-400' >Encrypt</span>/<span className='text-red-500' >Decrypt</span></div>
         <textarea className=" w-80 h-70 bg-yellow-200 rounded-3xl px-3 py-2 text-lg resize-none lg:w-120 lg:h-110 lg:text-2xl font-bold text-center" value={input} onChange={(e)=> setInput(e.target.value)} placeholder='Enter message here' />
@@ -51,7 +51,7 @@ export default function App(){
           </div>
       </div>
 
-      <div className={` flex flex-col px-3 py-2 rounded-2xl m-2 transform duration-300 
+      <div className={` flex flex-col rounded-2xl m-2 transform duration-300 overflow-hidden
                        ${howto ? 'max-h-[2000px] max-w-[2000px]' : 'max-h-0 max-w-0 opacity-0 '  } 
   `}>
         <div className='mb-1 bg-green-300 rounded-2xl p-1'>
