@@ -9,7 +9,8 @@ export default function App(){
   const [encrypted, setEncrypted] =useState('')
   const [decrypted, setDecrypted] =useState('')
   const [content, setContent] =useState('')
-  
+  const [howto, setHowto] = useState(false)
+
 
   const handleEncrypt = () =>{
     if(!key){
@@ -40,9 +41,28 @@ export default function App(){
   return(
     <div className="bg-zinc-900 min-h-screen flex flex-col items-center py-2  lg:flex-row lg:justify-center">
       <div className='flex flex-col items-center '>
-        <div className=" text-2xl text-white mb-2">Enter Text To <span className='text-green-400' >Encrypt</span>/<span className='text-red-500' >Decrypt</span></div>
-        <textarea className=" w-80 h-70 bg-rose-400 rounded-3xl px-3 py-2 text-sm resize-none lg:w-120 lg:h-110 lg:text-2xl " value={input} onChange={(e)=> setInput(e.target.value)} placeholder='enter the secret key and press red button, or enter your text here and press the green button. the secret key has to be entered by you, and no there is no database of messages encrypted or decrypted with the creator, it is just a front-end.' />
-          <input type="text" className='w-50 h-10 bg-yellow-500 px-2 py-1 mt-4 rounded-xl' value={key} onChange={(e)=>{setKey(e.target.value)}} placeholder='enter secret key here' />
+        <div className=" text-2xl text-white mb-2"><span className='text-green-400' >Encrypt</span>/<span className='text-red-500' >Decrypt</span></div>
+        <textarea className=" w-80 h-70 bg-yellow-200 rounded-3xl px-3 py-2 text-lg resize-none lg:w-120 lg:h-110 lg:text-2xl font-bold text-center" value={input} onChange={(e)=> setInput(e.target.value)} placeholder='enter message here' />
+          <div className='flex mt-4'>
+          <input type="text" className='w-50 h-10 bg-yellow-500 px-2 py-1 rounded-xl mr-2 text-center' value={key} onChange={(e)=>{setKey(e.target.value)}} placeholder='enter secret key here' />
+          <div className='h-10 w-30 flex justify-center items-center bg-sky-300 rounded-2xl' onClick={()=>setHowto(!howto)} >
+            How to use?
+          </div>
+          </div>
+      </div>
+
+      <div className={` flex flex-col px-3 py-2 rounded-2xl m-2 transform duration-300 
+                       ${howto ? 'max-h-[2000px] max-w-[2000px]' : 'max-h-0 max-w-0 opacity-0 '  } 
+  `}>
+        <div className='mb-1 bg-green-300 rounded-2xl p-1'>
+          <div>Encryption: simple message to secret message.</div>
+          <div>To Encrypt - enter your message in yellow box, enter secret key for eg. "banana", press green button to encrypt, send the resultant secret message to whoever you want along with link to site and secret key.</div>
+        </div>
+        <div className='mb-1 bg-amber-400 p-1 rounded-2xl'>secret key: pass to access message</div>
+        <div className='mb-1 bg-red-400 rounded-2xl p-1'>
+        <div>Decryption: secret message to simple message</div> 
+        <div>To Decrypt - enter secret message in yellow box, enter secret key given by sender, press red button to decrypt, read the resultant normal message</div>
+        </div>
       </div>
 
       <div className='flex lg:flex-col'>
@@ -63,7 +83,7 @@ export default function App(){
       </div>
       <div>
         <div className="text-center text-2xl text-white mb-2">Result</div>
-        <textarea placeholder='you will see your Encrypted or Decrypted message here' className=" w-80 h-70 bg-rose-400 rounded-3xl resize-none text-sm break-words px-3 py-2 lg:w-120 lg:h-110 lg:text-2xl" readOnly value={content}></textarea>
+        <textarea placeholder='you will see your Encrypted or Decrypted message here' className=" w-80 h-70 bg-rose-400 rounded-3xl resize-none text-lg font-bold break-words px-3 py-2 lg:w-120 lg:h-110 lg:text-2xl" readOnly value={content}></textarea>
         <div className='mt-2'> 
         <a className=' h-10 bg-yellow-500 px-2 py-1  mt-4 rounded-xl' href="https://github.com/HarshitOnClouds/Secret-Conversation">GitHub Link - no data is stored</a>
         </div>
