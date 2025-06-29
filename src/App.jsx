@@ -63,7 +63,7 @@ export default function App(){
       </div>
       <div>
         <div className="text-center text-2xl text-white mb-2">Result</div>
-        <textarea placeholder='you will see your result here' className=" w-80 h-70 bg-rose-400 rounded-3xl resize-none text-sm break-words px-3 py-2 lg:w-120 lg:h-110 lg:text-2xl" readOnly value={content}></textarea>
+        <textarea placeholder='you will see your Encrypted or Decrypted message here' className=" w-80 h-70 bg-rose-400 rounded-3xl resize-none text-sm break-words px-3 py-2 lg:w-120 lg:h-110 lg:text-2xl" readOnly value={content}></textarea>
         <div className='mt-2'> 
         <a className=' h-10 bg-yellow-500 px-2 py-1  mt-4 rounded-xl' href="https://github.com/HarshitOnClouds/Secret-Conversation">GitHub Link - no data is stored</a>
         </div>
