@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import CryptoJS from 'crypto-js'
 
 
@@ -10,7 +10,11 @@ export default function App(){
   const [decrypted, setDecrypted] =useState('')
   const [content, setContent] =useState('')
   const [howto, setHowto] = useState(false)
+  const inputRef = useRef(null)
 
+  useEffect(()=>{
+    if(inputRef.current) inputRef.current.focus()
+  }, [])
 
   const handleEncrypt = () =>{
     if(!key){
@@ -42,7 +46,7 @@ export default function App(){
     <div className="bg-zinc-900 min-h-screen flex flex-col justify-between items-center py-2  lg:flex-row lg:justify-center">
       <div className='flex flex-col items-center '>
         <div className=" text-2xl text-white mb-2"><span className='text-green-400' >Encrypt</span>/<span className='text-red-500' >Decrypt</span></div>
-        <textarea className=" w-80 h-70 bg-yellow-200 rounded-3xl px-3 py-2 text-lg resize-none lg:w-120 lg:h-110 lg:text-2xl font-bold text-center" value={input} onChange={(e)=> setInput(e.target.value)} placeholder='Enter message here' />
+        <textarea ref={inputRef} className=" w-80 h-70 bg-yellow-200 rounded-3xl px-3 py-2 text-lg resize-none lg:w-120 lg:h-110 lg:text-2xl font-bold text-center" value={input} onChange={(e)=> setInput(e.target.value)} placeholder='Enter message here' />
           <div className='flex mt-4'>
           <input type="text" className='w-50 h-10 bg-yellow-500 px-2 py-1 rounded-xl mr-2 text-center' value={key} onChange={(e)=>{setKey(e.target.value)}} placeholder='Enter secret key here' />
           <div className='h-10 w-30 flex justify-center items-center bg-sky-300 rounded-2xl' onClick={()=>setHowto(!howto)} >
