@@ -10,7 +10,9 @@ export default function App(){
   const [decrypted, setDecrypted] =useState('')
   const [content, setContent] =useState('')
   const [howto, setHowto] = useState(false)
+
   const inputRef = useRef(null)
+  const outputRef = useRef(null)
 
   useEffect(()=>{
     if(inputRef.current){
@@ -18,6 +20,8 @@ export default function App(){
       inputRef.current.select()
     }
   }, [])
+
+  
 
   const handleEncrypt = () =>{
     if(!key){
@@ -91,7 +95,8 @@ export default function App(){
       </div>
       <div>
         <div className="text-center text-2xl text-white mb-2">Result</div>
-        <textarea placeholder='You will see your Encrypted or Decrypted message here' className=" w-80 h-70 bg-rose-400 rounded-3xl resize-none text-lg font-bold break-words px-3 py-2 lg:w-120 lg:h-110 lg:text-2xl" readOnly value={content}></textarea>
+        <textarea placeholder='You will see your Encrypted or Decrypted message here' className=" w-80 h-70 bg-rose-400 rounded-3xl resize-none text-lg font-bold break-words px-3 py-2 lg:w-120 lg:h-110 lg:text-2xl"
+         readOnly value={content} ref={outputRef} onClick={()=> outputRef.current && outputRef.current.select()} onFocus={()=> outputRef.current && outputRef.current.select()} ></textarea>
         <div className='mt-2'> 
         <a className=' h-10 bg-yellow-500 px-2 py-1  mt-4 rounded-xl' href="https://github.com/HarshitOnClouds/Secret-Conversation">GitHub Link - no data is stored</a>
         </div>
